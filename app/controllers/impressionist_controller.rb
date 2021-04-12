@@ -65,7 +65,7 @@ module ImpressionistController
         :action_name => action_name,
         :user_id => user_id,
         :request_hash => @impressionist_hash,
-        :session_hash => session_hash,
+        :session_hash => session_hash_string,
         :ip_address => request.remote_ip,
         :referrer => request.referer,
         :params => filter.filter(params_hash)
@@ -140,7 +140,7 @@ module ImpressionistController
       associative_create_statement(query_params)
     end
 
-    def session_hash
+    def session_hash_string
 
       # # careful: request.session_options[:id] encoding in rspec test was ASCII-8BIT
       # # that broke the database query for uniqueness. not sure if this is a testing only issue.
